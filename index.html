@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Recipe Extractor</title>
+
+<style>
+
+body {
+font-family: Arial;
+margin: 20px;
+}
+
+.tab {
+margin-bottom: 20px;
+}
+
+button {
+padding: 10px;
+margin: 5px;
+}
+
+.card {
+border: 1px solid #ccc;
+padding: 15px;
+margin-top: 15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Recipe Extractor</h2>
+
+<div class="tab">
+
+<input
+id="urlInput"
+placeholder="Enter recipe URL"
+size="50"
+/>
+
+<button onclick="extractRecipe()">
+Extract Recipe
+</button>
+
+</div>
+
+<div id="result"></div>
+
+<hr>
+
+<h3>History</h3>
+
+<button onclick="loadHistory()">
+Load History
+</button>
+
+<div id="history"></div>
+
+<script>
+
+async function extractRecipe() {
+
+let url =
+document.getElementById(
+"urlInput"
+).value;
+
+let response =
+await fetch(
+"http://127.0.0.1:8000/extract",
+{
+method: "POST",
+headers: {
+"Content-Type":
+"application/json"
+},
+body: JSON.stringify({
+url: url
+})
+}
+);
+
+let data =
+await response.json();
+
+document.getElementById(
+"result"
+).innerHTML =
+"<pre>" +
+JSON.stringify(
+data,
+null,
+2
+) +
+"</pre>";
+
+}
+
+async function loadHistory() {
+
+let response =
+await fetch(
+"http://127.0.0.1:8000/history"
+);
+
+let data =
+await response.json();
+
+document.getElementById(
+"history"
+).innerHTML =
+"<pre>" +
+JSON.stringify(
+data,
+null,
+2
+) +
+"</pre>";
+
+}
+
+</script>
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Recipe Extractor</title>
+
+<style>
+
+body {
+font-family: Arial;
+margin: 20px;
+}
+
+.tab {
+margin-bottom: 20px;
+}
+
+button {
+padding: 10px;
+margin: 5px;
+}
+
+.card {
+border: 1px solid #ccc;
+padding: 15px;
+margin-top: 15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Recipe Extractor</h2>
+
+<div class="tab">
+
+<input
+id="urlInput"
+placeholder="Enter recipe URL"
+size="50"
+/>
+
+<button onclick="extractRecipe()">
+Extract Recipe
+</button>
+
+</div>
+
+<div id="result"></div>
+
+<hr>
+
+<h3>History</h3>
+
+<button onclick="loadHistory()">
+Load History
+</button>
+
+<div id="history"></div>
+
+<script>
+
+async function extractRecipe() {
+
+let url =
+document.getElementById(
+"urlInput"
+).value;
+
+let response =
+await fetch(
+"http://127.0.0.1:8000/extract",
+{
+method: "POST",
+headers: {
+"Content-Type":
+"application/json"
+},
+body: JSON.stringify({
+url: url
+})
+}
+);
+
+let data =
+await response.json();
+
+document.getElementById(
+"result"
+).innerHTML =
+"<pre>" +
+JSON.stringify(
+data,
+null,
+2
+) +
+"</pre>";
+
+}
+
+async function loadHistory() {
+
+let response =
+await fetch(
+"http://127.0.0.1:8000/history"
+);
+
+let data =
+await response.json();
+
+document.getElementById(
+"history"
+).innerHTML =
+"<pre>" +
+JSON.stringify(
+data,
+null,
+2
+) +
+"</pre>";
+
+}
+
+</script>
+
+</body>
+
+</html>
